@@ -1,121 +1,144 @@
-/* ================= HAMBURGER MENU ================= */
+// ================= MOBILE MENU =================
 
-let hamburger = document.getElementById("hamburger");
+const menuBtn = document.getElementById("menu-btn");
+const nav = document.getElementById("nav");
 
-let nav = document.getElementById("nav");
-
-
-hamburger.addEventListener("click", function () {
+menuBtn.addEventListener("click", function () {
 
     nav.classList.toggle("active");
 
 });
 
 
-/* ================= EVENT IMAGE SLIDER ================= */
+// Close menu when a navigation link is clicked
 
-let images = [
+const navLinks = document.querySelectorAll("nav a");
 
-    "images/sport1.jpg",
+navLinks.forEach(function (link) {
 
-    "images/sport2.jpg",
+    link.addEventListener("click", function () {
 
-    "images/sport3.jpg",
+        nav.classList.remove("active");
 
-    "images/sport4.jpg",
+    });
 
-    "images/sport5.jpg",
-
-    "images/sport6.jpg"
-
-];
+});
 
 
-let currentImage = 0;
+// ================= FOOTER YEAR =================
+
+const year = document.getElementById("year");
+
+year.textContent = new Date().getFullYear();
 
 
-let eventImage =
-    document.getElementById("eventImage");
+// ================= CONTACT FORM =================
+
+const contactForm = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+contactForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    formMessage.textContent =
+        "Thank you! Your message has been received.";
+
+    contactForm.reset();
+
+});
 
 
-let nextBtn =
-    document.getElementById("nextBtn");
+// ================= EVENT SLIDER =================
+
+const slides = document.querySelectorAll(".event-slide");
+
+const previousBtn = document.getElementById("previous");
+
+const nextBtn = document.getElementById("next");
+
+const dots = document.querySelectorAll(".dot");
+
+let currentSlide = 0;
 
 
-let prevBtn =
-    document.getElementById("prevBtn");
+// ================= SHOW SLIDE =================
 
+function showSlide(index) {
 
-let dots =
-    document.querySelectorAll(".dot");
+    // Hide all pictures
 
+    slides.forEach(function (slide) {
 
-/* SHOW IMAGE */
-
-function showImage(index) {
-
-    currentImage = index;
-
-    eventImage.src = images[currentImage];
-
-
-    /* Remove active from all dots */
-
-    dots.forEach(function(dot) {
-
-        dot.classList.remove("active");
+        slide.classList.remove("active");
 
     });
 
 
-    /* Add active to current dot */
+    // Remove active from all dots
 
-    dots[currentImage].classList.add("active");
+    dots.forEach(function (dot) {
+
+        dot.classList.remove("active-dot");
+
+    });
+
+
+    // Show selected picture
+
+    slides[index].classList.add("active");
+
+
+    // Make selected dot active
+
+    dots[index].classList.add("active-dot");
 
 }
 
 
-/* NEXT IMAGE */
+// ================= NEXT BUTTON =================
 
 nextBtn.addEventListener("click", function () {
 
-    currentImage++;
+    currentSlide++;
 
-    if (currentImage >= images.length) {
+    if (currentSlide >= slides.length) {
 
-        currentImage = 0;
+        currentSlide = 0;
 
     }
 
-    showImage(currentImage);
+    showSlide(currentSlide);
 
 });
 
 
-/* PREVIOUS IMAGE */
+// ================= PREVIOUS BUTTON =================
 
-prevBtn.addEventListener("click", function () {
+previousBtn.addEventListener("click", function () {
 
-    currentImage--;
+    currentSlide--;
 
-    if (currentImage < 0) {
+    if (currentSlide < 0) {
 
-        currentImage = images.length - 1;
+        currentSlide = slides.length - 1;
 
     }
 
-    showImage(currentImage);
+    showSlide(currentSlide);
 
 });
 
 
-/* DOTS */
+// ================= DOTS =================
 
-dots.forEach(function(dot, index) {
+dots.forEach(function (dot, index) {
 
     dot.addEventListener("click", function () {
 
-        showImage(index);
+        currentSlide = index;
+
+        showSlide(currentSlide);
 
     });
 
