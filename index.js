@@ -143,3 +143,47 @@ dots.forEach(function (dot, index) {
     });
 
 });
+
+
+// =========================
+// NEWS & UPCOMING EVENTS
+// =========================
+
+const newsTabs = document.querySelectorAll(".news-tab");
+const newsContents = document.querySelectorAll(".news-content");
+
+newsTabs.forEach(function(tab) {
+
+    tab.addEventListener("click", function() {
+
+        const newsId = tab.getAttribute("data-news");
+
+
+        // Remove active class from all tabs
+
+        newsTabs.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+
+        // Remove active class from all news content
+
+        newsContents.forEach(function(content) {
+            content.classList.remove("active");
+        });
+
+
+        // Add active class to clicked tab
+
+        tab.classList.add("active");
+
+
+        // Show matching news
+
+        const selectedNews = document.getElementById(newsId);
+
+        selectedNews.classList.add("active");
+
+    });
+
+});
