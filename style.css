@@ -1957,7 +1957,12 @@ footer {
     font-size: 13px;
 }
 
-.instagram-link {
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1966,11 +1971,11 @@ footer {
     margin-top: 10px;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.45);
-    border-radius: 9px;
+    border-radius: 50%;
     transition: 0.3s;
 }
 
-.instagram-link svg {
+.social-link svg {
     width: 21px;
     height: 21px;
     fill: none;
@@ -1978,7 +1983,7 @@ footer {
     stroke-width: 1.8;
 }
 
-.instagram-link:hover {
+.social-link:hover {
     color: #092c4b;
     background: white;
     transform: translateY(-3px);
