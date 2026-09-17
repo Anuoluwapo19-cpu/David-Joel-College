@@ -1466,7 +1466,8 @@ nav a:hover::after {
 }
 
 
-.event-slide img {
+.event-slide img,
+.event-slide video {
     width: 100%;
     height: 100%;
 
@@ -1606,7 +1607,8 @@ nav a:hover::after {
 }
 
 
-.event-slide img {
+.event-slide img,
+.event-slide video {
     width: 100%;
     height: 100%;
 
@@ -1947,6 +1949,39 @@ footer {
     color: #b7c7d6;
 
     font-size: 13px;
+}
+
+.social-label {
+    margin-top: 22px;
+    color: #b7c7d6;
+    font-size: 13px;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-top: 10px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 9px;
+    transition: 0.3s;
+}
+
+.instagram-link svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+.instagram-link:hover {
+    color: #092c4b;
+    background: white;
+    transform: translateY(-3px);
 }
 
 .footer-links {

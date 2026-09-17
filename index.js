@@ -32,23 +32,6 @@ const year = document.getElementById("year");
 year.textContent = new Date().getFullYear();
 
 
-// ================= CONTACT FORM =================
-
-const contactForm = document.getElementById("contact-form");
-const formMessage = document.getElementById("form-message");
-
-contactForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    formMessage.textContent =
-        "Thank you! Your message has been received.";
-
-    contactForm.reset();
-
-});
-
-
 // ================= EVENT SLIDER =================
 
 const slides = document.querySelectorAll(".event-slide");
@@ -96,53 +79,46 @@ function showSlide(index) {
 }
 
 
-// ================= NEXT BUTTON =================
+// ================= SLIDER CONTROLS =================
 
-nextBtn.addEventListener("click", function () {
+if (slides.length > 1) {
 
-    currentSlide++;
+    nextBtn.addEventListener("click", function () {
 
-    if (currentSlide >= slides.length) {
+        currentSlide++;
 
-        currentSlide = 0;
-
-    }
-
-    showSlide(currentSlide);
-
-});
-
-
-// ================= PREVIOUS BUTTON =================
-
-previousBtn.addEventListener("click", function () {
-
-    currentSlide--;
-
-    if (currentSlide < 0) {
-
-        currentSlide = slides.length - 1;
-
-    }
-
-    showSlide(currentSlide);
-
-});
-
-
-// ================= DOTS =================
-
-dots.forEach(function (dot, index) {
-
-    dot.addEventListener("click", function () {
-
-        currentSlide = index;
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
 
         showSlide(currentSlide);
 
     });
 
-});
+    previousBtn.addEventListener("click", function () {
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+            currentSlide = slides.length - 1;
+        }
+
+        showSlide(currentSlide);
+
+    });
+
+    dots.forEach(function (dot, index) {
+
+        dot.addEventListener("click", function () {
+
+            currentSlide = index;
+            showSlide(currentSlide);
+
+        });
+
+    });
+
+}
 
 
 // =========================
